@@ -1,12 +1,16 @@
-package words3;
+package Words4;
 
-import java.util.*;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
 /**
  * Created by Xuhao Chen on 16/3/17.
  */
-public class Words3 {
-    public static void main(String[] args){new Words3();}
+public class Words4 {
+    public static void main(String[] args){new Words4();}
 
     private ArrayList<Word> words = new ArrayList<Word>();
 
@@ -50,13 +54,24 @@ public class Words3 {
     /**
      * constructor
      */
-    public Words3(){
+    public Words4(){
+        /********** starting from here ***************/
+        String input = "";
+        try {
+            File file = new File("ass4data.txt");
 
-        System.out.println("Please enter a line:");
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+//                System.out.println(line);
+                input = input+line+" ";
+            }
+            scanner.close();
 
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();   //这里是你需要改的地方
-
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        /********************************************/
         Queue<Integer> spaceList = new LinkedList<Integer>();
 
         for(int i=0;i<input.length();i++){
